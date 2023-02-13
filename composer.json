@@ -1,0 +1,19 @@
+{
+  "name": "clifford/demo-api",
+  "description": "PHP demo API built with Doctrine and Slim framework",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "Clifford Laserre",
+      "email": "claserre9@gmail.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "App\\": "src/"
+    }
+  },
+  "require": {
+  }
+}
