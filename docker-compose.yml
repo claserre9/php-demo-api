@@ -1,22 +1,24 @@
 version: "3.8"
 services:
-  php-apache-environment:
+  php-apache:
     container_name: php-apache
+    working_dir: /var/www/html
     build:
       context: .
       dockerfile: Dockerfile
     depends_on:
       - db
     volumes:
-      - /var/www/html/vendor/
-      - ./:/var/www/html/
-
+      - .:/var/www/html
+      - ./vendor:/var/www/html/vendor
     ports:
       - "8000:80"
+
   db:
     container_name: db
     image: mysql
     restart: always
+    working_dir: /var/www/html
     environment:
       MYSQL_ROOT_PASSWORD: MYSQL_ROOT_PASSWORD
       MYSQL_DATABASE: MYSQL_DATABASE
@@ -26,6 +28,7 @@ services:
       - "9906:3306"
     volumes:
       - mysql_db:/var/lib/mysql
+
   phpmyadmin:
     container_name: phpmyadmin
     image: phpmyadmin/phpmyadmin
